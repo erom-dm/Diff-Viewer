@@ -12,3 +12,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
   monospace;
 }
+
+.navBar{
+  background-color: #000000;
+  color: #fff;
+}
+
+.mainContainer{
+  width: 1600px;
+  height: 95vh;
+  margin: 0 auto;
+}
+
+.comparatorArea{
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.comparator{
+  display: block;
+  flex-basis: 50%;
+}
+
+.left{
+  background-color: #b1f3ff;
+}
+
+.right{
+  background-color: #ffdc92;
+}
