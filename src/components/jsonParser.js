@@ -8,19 +8,22 @@ function JSONtoArray(obj){
     // Iterate through all keys in JSON
     for (const key in obj){
         if(obj.hasOwnProperty(key)){
+
+            const status = obj[key]['status'] ? 'status##'+obj[key]['status'] : 'default';
+
             if(typeof obj[key] === 'object' && obj[key] !== null && key !== 'elements'){
                 // If node has children
-                arr.push({'nodeName': key, 'children': JSONtoArray(obj[key])})
+                arr.push({'nodeName': key, 'status': status, 'children': JSONtoArray(obj[key])})
             } else if (key === 'elements'){
                 for (const el in obj[key]){
-                    arr.push(obj[key][el]['name']);
-                    arr.push('status' + '##' + obj[key][el]['status']);
+                    if(obj[key].hasOwnProperty(el)){
+                        // Inside 'elements' array, push items as strings with status concatenated in front
+                        arr.push('status##' + obj[key][el]['status'] + '||' + obj[key][el]['name']);
+                    }
                 }
             } else {
-                // Check if node without children is status node or not
-                if (key === 'status'){
-                    arr.push(key + '##' + obj[key])
-                } else {
+                // do not include status nodes for parents
+                if (key !== 'status'){
                     arr.push(obj[key]);
                 }
             }
@@ -30,7 +33,7 @@ function JSONtoArray(obj){
     return arr
 }
 
-function ParseDataArray(arr, parentName = ''){
+function ParseDataArray(arr, side, parentName = ''){
 
     function modifyParentName(parentName){
         switch (parentName) {
@@ -50,33 +53,41 @@ function ParseDataArray(arr, parentName = ''){
 
     //Iterate through all nodes in the array
     for (let node of arr){
+        //Status variable, if exists
+        const status = node['status'] && side === 'right' ? node['status'].slice(node['status'].indexOf('##')+2) : null;
+
         if(typeof node === 'object' && !Array.isArray(node) && node !== null){
             //Check if node has child elements
             const hasChildren = node['children'] !== null && node['children'].length > 0;
-            //Pass modified current node name for use in childless elements
+            //Modified current node name to remove prefixes in childless elements
             const newParentName = modifyParentName(node[nodeName]);
 
-
             listComponent.push(
-                <List.Item>
+                <List.Item active={true}>
                     <List.Icon name={'folder'} />
                     <List.Content>
-                        <List.Header> {node[nodeName]} </List.Header>
+                        <List.Header className={status}> {node[nodeName]} </List.Header>
                         {
                             hasChildren
-                            ? <List> {ParseDataArray(node['children'], parentName + newParentName)} </List>
+                            ? <List> {ParseDataArray(node['children'], side, parentName + newParentName)} </List>
                             : null
                         }
                     </List.Content>
                 </List.Item>
             )
-        // Do not include status nodes in the tree
-        } else if (!node.includes('status##')) {
+        } else {
+            const header = typeof node === 'string' ? node.replace(parentName, '') : node;
+            const headerHasStatus = header.includes('status##');
+            const stat = headerHasStatus && side === 'right'
+                ? header.slice(header.indexOf('##')+2, header.indexOf('||'))
+                : null;
+            const cleanHeader = headerHasStatus ? header.slice(header.indexOf('||')+2) : header;
+
             listComponent.push(
                 <List.Item>
                     <List.Icon name={'file'} />
                     <List.Content>
-                        <List.Header> {typeof node === 'string' ? node.replace(parentName, '') : node} </List.Header>
+                        <List.Header className={stat}> {cleanHeader} </List.Header>
                     </List.Content>
                 </List.Item>
             )
@@ -91,7 +102,7 @@ class SemanticTree extends Component{
     render(){
         return(
             <List>
-                {ParseDataArray(JSONtoArray(this.props.data.nodes))}
+                {ParseDataArray(JSONtoArray(this.props.data.nodes), this.props.side)}
             </List>
         )
     }

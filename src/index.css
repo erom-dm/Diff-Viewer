@@ -31,6 +31,20 @@ code {
   width: 100%;
 }
 
+/*16313 semantic css line redacted*/
+
+.absent {
+  color: red;
+}
+
+.modified {
+  color: #ffb52a;
+}
+
+.new {
+  color: green;
+}
+
 .comparator{
   display: block;
   flex-basis: 50%;
