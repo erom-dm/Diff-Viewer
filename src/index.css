@@ -38,16 +38,17 @@ code {
 /*16313 semantic css line redacted*/
 
 .absent {
-  color: red;
+  color: #e10b04;
 }
 
 .modified {
-  color: #ffb52a;
+  color: #e8dc33;
 }
 
 .new {
-  color: green;
+  color: #24aa0a;
 }
+
 
 .comparator{
   display: block;

@@ -14,16 +14,16 @@ function setIcon({loading, children}){
     }
 }
 
-decorators.Header = (props) => {
+decorators.Header = ({node, style}) => {
 
-    const icon = setIcon(props.node);
-    const nodeName = props.node.name.replace(props.node.parents, '');
+    const icon = setIcon(node);
+    const nodeName = node.name.replace(node.parents, '');
 
     return (
-        <List.Item style={props.style}>
+        <List.Item style={style}>
             <List.Icon name={icon}/>
             <List.Content>
-                <List.Header>{nodeName}</List.Header>
+                <List.Header className={node.status}>{nodeName}</List.Header>
             </List.Content>
         </List.Item>
     );
@@ -46,7 +46,8 @@ class TreeExample extends React.Component {
         this.onToggle = this.onToggle.bind(this);
     }
     onToggle(node, toggled){
-        if(this.state.cursor){this.state.cursor.active = false;}
+        // This was an original content of if body: (this.state.cursor.active = false;)
+        if(this.state.cursor){this.setState({cursor:{active:false}})}
         node.active = true;
         if(node.children){ node.toggled = toggled; }
         this.setState({ cursor: node });
