@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import {Container} from 'semantic-ui-react';
-import ComparatorHalf from './components/jsonParser';
+//import ComparatorHalf from './components/jsonParser';
 import dataSource from './test-data';
+import Treebeard from './components/treebeard';
+import JSONparser from './components/jsonToTreebeard';
 
 
 
@@ -11,12 +13,18 @@ class App extends Component {
         <Fragment>
             <div className='navBar'>Navbar</div>
             <div className='mainContainer'>
-                <Container>
-                    <div className='comparatorArea'>
-                        <ComparatorHalf side='left' data={dataSource.left}/>
-                        <ComparatorHalf side='right' data={dataSource.right}/>
-                    </div>
-                </Container>
+
+                <div className='comparatorArea'>
+                    <Treebeard data={JSONparser(dataSource.left)}/>
+                    <Treebeard data={JSONparser(dataSource.right)}/>
+                </div>
+
+                {/*<Container>*/}
+                    {/*<div className='comparatorArea'>*/}
+                        {/*<ComparatorHalf side='left' data={dataSource.left}/>*/}
+                        {/*<ComparatorHalf side='right' data={dataSource.right}/>*/}
+                    {/*</div>*/}
+                {/*</Container>*/}
             </div>
         </Fragment>
     );

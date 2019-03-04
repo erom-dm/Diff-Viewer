@@ -25,10 +25,14 @@ code {
 }
 
 .comparatorArea{
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   height: 100%;
-  width: 100%;
+  margin: 0 auto;
+  width: 1450px;
+  padding: 5px 8px 5px 8px;
+  background-color: #50565d;
 }
 
 /*16313 semantic css line redacted*/
