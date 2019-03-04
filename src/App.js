@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import {Container} from 'semantic-ui-react';
+//import {Container} from 'semantic-ui-react';
 //import ComparatorHalf from './components/jsonParser';
 import dataSource from './test-data';
-import Treebeard from './components/treebeard';
-import JSONparser from './components/jsonToTreebeard';
+import TreeBeard from './components/treebeard';
+import JSONParser from './components/jsonToTreebeard';
 
 
 
@@ -15,8 +15,8 @@ class App extends Component {
             <div className='mainContainer'>
 
                 <div className='comparatorArea'>
-                    <Treebeard data={JSONparser(dataSource.left)}/>
-                    <Treebeard data={JSONparser(dataSource.right)}/>
+                    <TreeBeard data={JSONParser(dataSource.left.nodes)}/>
+                    <TreeBeard data={JSONParser(dataSource.right.nodes)}/>
                 </div>
 
                 {/*<Container>*/}
