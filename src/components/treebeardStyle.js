@@ -32,26 +32,27 @@ export default {
                 base: {
                     position: 'relative',
                     display: 'inline-block',
-                    verticalAlign: 'top',
-                    marginLeft: '-5px',
-                    height: '24px',
-                    width: '24px'
+                    verticalAlign: 'center',
+                    marginLeft: '0',
+                    height: '15px',
+                    width: '15px'
                 },
                 wrapper: {
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
-                    margin: '-7px 0 0 -7px',
+                    margin: '-5px 0 0 -6px',
                     height: '14px'
                 },
-                height: 14,
-                width: 14,
+                height: 10,
+                width: 10,
                 arrow: {
                     fill: '#9DA5AB',
                     strokeWidth: 0
                 }
             },
             header: {
+                display: 'flex',
                 base: {
                     display: 'inline-block',
                     verticalAlign: 'top',
@@ -73,7 +74,17 @@ export default {
             },
             subtree: {
                 listStyle: 'none',
-                paddingLeft: '19px'
+                paddingLeft: '19px',
+                // '&:before':{
+                //     content: '""',
+                //     display: 'block',
+                //     position: 'relative',
+                //     bottom: 0,
+                //     left: '-15px',
+                //     width: '50%',
+                //     margin: '0 auto',
+                //     'border-right': '2px solid rgb(52, 53, 54)',
+                // }
             },
             loading: {
                 color: '#E2C089'
@@ -81,3 +92,5 @@ export default {
         }
     }
 };
+
+//border-right: 2px solid rgb(52, 53, 54);

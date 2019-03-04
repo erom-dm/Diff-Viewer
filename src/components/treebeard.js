@@ -29,12 +29,12 @@ decorators.Header = ({node, style}) => {
     );
 };
 
-decorators.Toggle = (props) => {
-    return (
-        <div>
-        </div>
-    );
-};
+// decorators.Toggle = (props) => {
+//     return (
+//         <div>
+//         </div>
+//     );
+// };
 
 
 

@@ -49,6 +49,10 @@ code {
   color: #24aa0a;
 }
 
+.css-79elbk div{
+  display: flex;
+  align-items: center;
+}
 
 .comparator{
   display: block;
