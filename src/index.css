@@ -55,6 +55,7 @@ code {
 
 .css-79elbk div{
   display: flex;
+  cursor:pointer;
 }
 
 .comparator{
