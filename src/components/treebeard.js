@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {toggleNode} from "../actions/nodes";
+import { connect } from "react-redux";
 import {Treebeard, decorators} from 'react-treebeard';
 import {List} from 'semantic-ui-react';
 import styles from './treebeardStyle';
@@ -39,6 +41,9 @@ class TB extends Component {
     }
 
     onToggle(node, toggled){
+        // console.log('<<<<>>>>');
+        // console.log(node);
+        this.props.toggleNode({[node.path]: !node.toggled});
         // This was an original content of if body: (this.state.cursor.active = false;)
         if(this.state.cursor){this.setState({cursor:{active:false}})}
         node.active = true;
@@ -58,6 +63,17 @@ class TB extends Component {
     }
 }
 
-export default TB;
+function mapStateToProps(state) {
+    return{
+        nodes: state.nodes,
+    }
+}
+
+const mapDispatchToProps = {
+    toggleNode,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TB);
 
 
