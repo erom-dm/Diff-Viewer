@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Treebeard, decorators} from 'react-treebeard';
 import {List} from 'semantic-ui-react';
 import styles from './treebeardStyle';
@@ -30,22 +30,14 @@ decorators.Header = ({node, style}) => {
     );
 };
 
-// decorators.Toggle = (props) => {
-//     return (
-//         <div>
-//         </div>
-//     );
-// };
-
-
-
-class TreeExample extends React.Component {
+class TB extends Component {
 
     constructor(props){
         super(props);
         this.state = {};
         this.onToggle = this.onToggle.bind(this);
     }
+
     onToggle(node, toggled){
         // This was an original content of if body: (this.state.cursor.active = false;)
         if(this.state.cursor){this.setState({cursor:{active:false}})}
@@ -53,6 +45,7 @@ class TreeExample extends React.Component {
         if(node.children){ node.toggled = toggled; }
         this.setState({ cursor: node });
     }
+
     render(){
         return (
             <Treebeard
@@ -65,6 +58,6 @@ class TreeExample extends React.Component {
     }
 }
 
-export default TreeExample;
+export default TB;
 
 

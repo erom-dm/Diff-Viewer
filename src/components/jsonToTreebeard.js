@@ -1,4 +1,5 @@
 
+
 function modifyParentName(parents){
     switch (parents) {
         case 'storage':
@@ -11,8 +12,11 @@ function modifyParentName(parents){
             return parents;
     }
 }
+function generateID () {
+    return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
+}
 
-export default function JSONtoArray(obj, parentName = ''){
+export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
     const arr = [];
 
     // Iterate through all keys in JSON
@@ -25,20 +29,29 @@ export default function JSONtoArray(obj, parentName = ''){
 
             // General case for objects
             if(typeof obj[key] === 'object' && obj[key] !== null && key !== 'elements'){
+
+                // Add {nodeName: toggle state} to Redux store.nodes only if node has children in at least 1 tree
+                nodeDispatcher({[parents]: false});
+
                 arr.push({
+                    'id': generateID(),
                     'name': key,
                     'status': status,
                     'parents': parentName,
+                    'path': parents,
                 });
+
                 // Add array with child nodes only if children are present
                 if (!hasNoChildren){
-                    arr[arr.length - 1]['children'] = JSONtoArray(obj[key], parents);
+                    arr[arr.length - 1]['children'] = JSONtoArray(obj[key], nodeDispatcher, parents);
                 }
+
             // Special case for 'elements' array
             } else if (key === 'elements'){
                 for (const el in obj[key]){
                     if(obj[key].hasOwnProperty(el)){
                         arr.push({
+                            'id': generateID(),
                             'name': obj[key][el]['name'],
                             'status': obj[key][el]['status'],
                             'parents': parentName,
@@ -50,6 +63,7 @@ export default function JSONtoArray(obj, parentName = ''){
                 // do not include status nodes for parents
                 if (key !== 'status'){
                     arr.push({
+                        'id': generateID(),
                         'name': obj[key],
                         'parents': parentName,
                         'status': status
