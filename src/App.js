@@ -5,7 +5,10 @@ import dataSource from './test-data';
 import TreeBeard from './components/treebeard';
 import JSONParser from './components/jsonToTreebeard';
 
-
+console.log('<<<<<<< Left >>>>>>>');
+console.log(JSONParser(dataSource.left.nodes));
+console.log('<<<<<<< Right >>>>>>>');
+console.log(JSONParser(dataSource.right.nodes));
 
 class App extends Component {
   render() {

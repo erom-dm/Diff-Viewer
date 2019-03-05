@@ -18,9 +18,10 @@ decorators.Header = ({node, style}) => {
 
     const icon = setIcon(node);
     const nodeName = node.name.replace(node.parents, '');
+    const hasNoChildren = node.children === undefined;
 
     return (
-        <List.Item style={style}>
+        <List.Item className={hasNoChildren && 'toggle-off'} style={style}>
             <List.Icon name={icon}/>
             <List.Content>
                 <List.Header className={node.status}>{nodeName}</List.Header>

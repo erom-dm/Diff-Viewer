@@ -20,27 +20,32 @@ export default function JSONtoArray(obj, parentName = ''){
         if(obj.hasOwnProperty(key)){
             const parents = parentName.concat(modifyParentName(key));
             const status = obj[key]['status'] ? obj[key]['status'] : 'unchanged';
+            const hasNoChildren = (Object.entries(obj[key]).length === 0 && obj[key].constructor === Object)
+                                || (Object.entries(obj[key]).length === 1 && Object.entries(obj[key])[0][0] === 'status');
 
-            // If node has children
+            // General case for objects
             if(typeof obj[key] === 'object' && obj[key] !== null && key !== 'elements'){
                 arr.push({
                     'name': key,
                     'status': status,
                     'parents': parentName,
-                    'children': JSONtoArray(obj[key], parents)
-                })
+                });
+                // Add array with child nodes only if children are present
+                if (!hasNoChildren){
+                    arr[arr.length - 1]['children'] = JSONtoArray(obj[key], parents);
+                }
+            // Special case for 'elements' array
             } else if (key === 'elements'){
                 for (const el in obj[key]){
                     if(obj[key].hasOwnProperty(el)){
-                        // Inside 'elements' array, push items as strings with status concatenated in front
                         arr.push({
                             'name': obj[key][el]['name'],
                             'status': obj[key][el]['status'],
                             'parents': parentName,
-                            'children':[]
                         });
                     }
                 }
+            // General case for non-objects
             } else {
                 // do not include status nodes for parents
                 if (key !== 'status'){

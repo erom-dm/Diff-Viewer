@@ -35,7 +35,7 @@ code {
   background-color: #50565d;
 }
 
-/*16313 semantic css line redacted*/
+/* todo: 16313 semantic css line redacted */
 
 .absent {
   color: #e10b04;
@@ -49,9 +49,12 @@ code {
   color: #24aa0a;
 }
 
+.toggle-off{
+  margin-left: 16px;
+}
+
 .css-79elbk div{
   display: flex;
-  align-items: center;
 }
 
 .comparator{
