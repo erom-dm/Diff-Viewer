@@ -34,6 +34,19 @@ decorators.Header = ({node, style}) => {
 
 class TB extends Component {
 
+    componentDidUpdate (prevProps, prevState, snapshot) {
+        const {cursor, data} = this.props;
+
+        const updatedNode = data.find(node => node.path === cursor.path);
+
+        if (updatedNode && updatedNode.toggled !== cursor.toggled) {
+            updatedNode.toggled = cursor.toggled;
+            updatedNode.active = cursor.active;
+
+            this.setState({cursor: updatedNode})
+        }
+    }
+
     constructor(props){
         super(props);
         this.state = {};
@@ -41,14 +54,14 @@ class TB extends Component {
     }
 
     onToggle(node, toggled){
-        // console.log('<<<<>>>>');
-        // console.log(node);
-        this.props.toggleNode({[node.path]: !node.toggled});
-        // This was an original content of if body: (this.state.cursor.active = false;)
-        if(this.state.cursor){this.setState({cursor:{active:false}})}
         node.active = true;
-        if(node.children){ node.toggled = toggled; }
-        this.setState({ cursor: node });
+
+        if (node.children) {
+            node.toggled = toggled
+        }
+
+        this.setState({cursor: node});
+        this.props.toggleNode(node)
     }
 
     render(){
@@ -65,7 +78,7 @@ class TB extends Component {
 
 function mapStateToProps(state) {
     return{
-        nodes: state.nodes,
+        cursor: state.nodes,
     }
 }
 

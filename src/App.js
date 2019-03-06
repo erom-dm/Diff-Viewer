@@ -6,6 +6,7 @@ import TreeBeard from './components/treebeard';
 import JSONParser from './components/jsonToTreebeard';
 
 class App extends Component {
+
   render() {
     const addNodeDispatch = this.props.addNode;
     const leftData = JSONParser(dataSource.left.nodes, addNodeDispatch);
