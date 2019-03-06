@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {addNode} from "./actions/nodes";
 import dataSource from './test-data';
 import TreeBeard from './components/treebeard';
-import JSONParser from './components/jsonToTreebeard';
+import JSONParser from './jsonToTreebeard';
 
 class App extends Component {
 
@@ -26,10 +26,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-    return{
-
-    }
+function mapStateToProps() {
+    return{}
 }
 
 const mapDispatchToProps = {

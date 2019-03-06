@@ -12,9 +12,6 @@ function modifyParentName(parents){
             return parents;
     }
 }
-function generateID () {
-    return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
-}
 
 export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
     const arr = [];
@@ -34,7 +31,6 @@ export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
                 nodeDispatcher({[parents]: false});
 
                 arr.push({
-                    'id': generateID(),
                     'name': key,
                     'status': status,
                     'parents': parentName,
@@ -51,7 +47,6 @@ export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
                 for (const el in obj[key]){
                     if(obj[key].hasOwnProperty(el)){
                         arr.push({
-                            'id': generateID(),
                             'name': obj[key][el]['name'],
                             'status': obj[key][el]['status'],
                             'parents': parentName,
@@ -63,7 +58,6 @@ export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
                 // Do not include status nodes for parents
                 if (key !== 'status'){
                     arr.push({
-                        'id': generateID(),
                         'name': obj[key],
                         'parents': parentName,
                         'status': status

@@ -17,13 +17,13 @@ function setIcon({loading, children}){
 }
 
 decorators.Header = ({node, style}) => {
+    // Decorate TreeBeard header in order to display Semantic UI List items.
 
     const icon = setIcon(node);
     const nodeName = node.name.replace(node.parents, '');
-    const hasNoChildren = node.children === undefined;
 
     return (
-        <List.Item className={hasNoChildren && 'toggle-off'} style={style}>
+        <List.Item style={style}>
             <List.Icon name={icon}/>
             <List.Content>
                 <List.Header className={node.status}>{nodeName}</List.Header>
@@ -33,32 +33,32 @@ decorators.Header = ({node, style}) => {
 };
 
 function findPath(data, cursor) {
-    let nodeToUpdate = data.find(node => node.path === cursor.path);
-    if (!nodeToUpdate && data) {
 
-        for(let i = 0; i <= data.length; i++){
+    // Check top level for node to update
+    let nodeToUpdate = data.find(node => node.path === cursor.path);
+
+    // If node is not found on top level, recursively search through children
+    if (!nodeToUpdate && data) {
+        for(let i = 0; i < data.length; i++){
             const node = data[i];
             if(node.children && node.hasOwnProperty('children')){
                 nodeToUpdate = findPath(node.children, cursor);
                 if(nodeToUpdate){
-                    console.log(nodeToUpdate);
-                    return nodeToUpdate
+                    return nodeToUpdate;
                 }
             }
         }
     }
 
-    console.log(nodeToUpdate);
     return nodeToUpdate;
 }
 
 class TB extends Component {
 
     componentDidUpdate (prevProps, prevState, snapshot) {
+
         const {data, cursor} = this.props;
 
-
-        // todo has to look deeper
         const nodeToUpdate = findPath(data, cursor);
 
         if (nodeToUpdate && nodeToUpdate.toggled !== cursor.toggled) {
