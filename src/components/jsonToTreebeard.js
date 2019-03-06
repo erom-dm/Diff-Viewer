@@ -60,7 +60,7 @@ export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
                 }
             // General case for non-objects
             } else {
-                // do not include status nodes for parents
+                // Do not include status nodes for parents
                 if (key !== 'status'){
                     arr.push({
                         'id': generateID(),

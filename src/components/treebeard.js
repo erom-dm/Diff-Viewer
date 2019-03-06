@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {toggleNode} from "../actions/nodes";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import {Treebeard, decorators} from 'react-treebeard';
 import {List} from 'semantic-ui-react';
 import styles from './treebeardStyle';
@@ -32,18 +32,40 @@ decorators.Header = ({node, style}) => {
     );
 };
 
+function findPath(data, cursor) {
+    let nodeToUpdate = data.find(node => node.path === cursor.path);
+    if (!nodeToUpdate && data) {
+
+        for(let i = 0; i <= data.length; i++){
+            const node = data[i];
+            if(node.children && node.hasOwnProperty('children')){
+                nodeToUpdate = findPath(node.children, cursor);
+                if(nodeToUpdate){
+                    console.log(nodeToUpdate);
+                    return nodeToUpdate
+                }
+            }
+        }
+    }
+
+    console.log(nodeToUpdate);
+    return nodeToUpdate;
+}
+
 class TB extends Component {
 
     componentDidUpdate (prevProps, prevState, snapshot) {
-        const {cursor, data} = this.props;
+        const {data, cursor} = this.props;
 
-        const updatedNode = data.find(node => node.path === cursor.path);
 
-        if (updatedNode && updatedNode.toggled !== cursor.toggled) {
-            updatedNode.toggled = cursor.toggled;
-            updatedNode.active = cursor.active;
+        // todo has to look deeper
+        const nodeToUpdate = findPath(data, cursor);
 
-            this.setState({cursor: updatedNode})
+        if (nodeToUpdate && nodeToUpdate.toggled !== cursor.toggled) {
+            nodeToUpdate.toggled = cursor.toggled;
+            nodeToUpdate.active = cursor.active;
+
+            this.setState({cursor: nodeToUpdate})
         }
     }
 
