@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {toggleNode} from "../actions/nodes";
+import {toggleNode} from "../../actions/nodes";
 import {connect} from "react-redux";
 import {Treebeard, decorators} from 'react-treebeard';
 import {List} from 'semantic-ui-react';
@@ -83,6 +83,8 @@ class TB extends Component {
         }
 
         this.setState({cursor: node});
+
+        // Add toggled node to Redux store as a cursor
         this.props.toggleNode(node)
     }
 

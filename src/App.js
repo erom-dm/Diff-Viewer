@@ -1,16 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from "react-redux";
-import {addNode} from "./actions/nodes";
 import dataSource from './test-data';
-import TreeBeard from './components/treebeard';
+import TreeBeard from './components/TreeBeard/treebeard';
 import JSONParser from './jsonToTreebeard';
 
 class App extends Component {
 
   render() {
-    const addNodeDispatch = this.props.addNode;
-    const leftData = JSONParser(dataSource.left.nodes, addNodeDispatch);
-    const rightData = JSONParser(dataSource.right.nodes, addNodeDispatch);
+    const leftData = JSONParser(dataSource.left.nodes);
+    const rightData = JSONParser(dataSource.right.nodes);
 
     return (
         <Fragment>
@@ -26,12 +23,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps() {
-    return{}
-}
-
-const mapDispatchToProps = {
-    addNode,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

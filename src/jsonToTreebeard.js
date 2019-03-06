@@ -13,7 +13,7 @@ function modifyParentName(parents){
     }
 }
 
-export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
+export default function JSONtoArray(obj, parentName = ''){
     const arr = [];
 
     // Iterate through all keys in JSON
@@ -27,9 +27,6 @@ export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
             // General case for objects
             if(typeof obj[key] === 'object' && obj[key] !== null && key !== 'elements'){
 
-                // Add {nodeName: toggle state} to Redux store.nodes only if node has children in at least 1 tree
-                nodeDispatcher({[parents]: false});
-
                 arr.push({
                     'name': key,
                     'status': status,
@@ -39,7 +36,7 @@ export default function JSONtoArray(obj, nodeDispatcher, parentName = ''){
 
                 // Add array with child nodes only if children are present
                 if (!hasNoChildren){
-                    arr[arr.length - 1]['children'] = JSONtoArray(obj[key], nodeDispatcher, parents);
+                    arr[arr.length - 1]['children'] = JSONtoArray(obj[key], parents);
                 }
 
             // Special case for 'elements' array
