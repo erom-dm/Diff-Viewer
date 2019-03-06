@@ -1,16 +1,16 @@
 {
-  "main.css": "/Diff-Viewer/static/css/main.ae3f96aa.chunk.css",
-  "main.js": "/Diff-Viewer/static/js/main.366e6268.chunk.js",
-  "main.js.map": "/Diff-Viewer/static/js/main.366e6268.chunk.js.map",
+  "main.css": "/Diff-Viewer/static/css/main.9f69e832.chunk.css",
+  "main.js": "/Diff-Viewer/static/js/main.4229b716.chunk.js",
+  "main.js.map": "/Diff-Viewer/static/js/main.4229b716.chunk.js.map",
   "runtime~main.js": "/Diff-Viewer/static/js/runtime~main.cfd23fc2.js",
   "runtime~main.js.map": "/Diff-Viewer/static/js/runtime~main.cfd23fc2.js.map",
   "static/css/2.2c4c9e5d.chunk.css": "/Diff-Viewer/static/css/2.2c4c9e5d.chunk.css",
   "static/js/2.8d3f0eaa.chunk.js": "/Diff-Viewer/static/js/2.8d3f0eaa.chunk.js",
   "static/js/2.8d3f0eaa.chunk.js.map": "/Diff-Viewer/static/js/2.8d3f0eaa.chunk.js.map",
   "index.html": "/Diff-Viewer/index.html",
-  "precache-manifest.77f7cc4be668b882eef3a221b9757340.js": "/Diff-Viewer/precache-manifest.77f7cc4be668b882eef3a221b9757340.js",
+  "precache-manifest.8accf71ed7c6b461014cb4072882384a.js": "/Diff-Viewer/precache-manifest.8accf71ed7c6b461014cb4072882384a.js",
   "service-worker.js": "/Diff-Viewer/service-worker.js",
   "static/css/2.2c4c9e5d.chunk.css.map": "/Diff-Viewer/static/css/2.2c4c9e5d.chunk.css.map",
-  "static/css/main.ae3f96aa.chunk.css.map": "/Diff-Viewer/static/css/main.ae3f96aa.chunk.css.map",
+  "static/css/main.9f69e832.chunk.css.map": "/Diff-Viewer/static/css/main.9f69e832.chunk.css.map",
   "static/media/semantic.css": "/Diff-Viewer/static/media/outline-icons.ef60a4f6.woff"
 }
