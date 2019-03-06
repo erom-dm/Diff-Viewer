@@ -16,6 +16,7 @@ code {
 .comparatorArea{
   display: flex;
   justify-content: space-between;
+  flex-wrap: nowrap;
   box-sizing: border-box;
   height: 100vh;
   margin: 0 auto;
@@ -67,15 +68,6 @@ code {
 
 .toggle-off{
   margin-left: 16px;
-}
-
-.css-7t1nxl{
-  overflow: auto;
-}
-
-.css-79elbk div{
-  display: flex;
-  cursor:pointer;
 }
 
 .comparator{

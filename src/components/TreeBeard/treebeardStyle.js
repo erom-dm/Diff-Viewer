@@ -12,13 +12,19 @@ export default {
             width: '100%',
             height: '100%',
             border: '1px solid #c6ced4',
+            overflow: 'auto',
             'margin-top': '5px',
             'margin-bottom': '0',
         },
 
         node: {
             base: {
-                position: 'relative'
+                position: 'relative',
+
+                div: {
+                    display: 'flex',
+                    cursor: 'pointer',
+                }
             },
             link: {
                 cursor: 'pointer',
