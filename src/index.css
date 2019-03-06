@@ -13,27 +13,33 @@ code {
   monospace;
 }
 
-.mainContainer{
-  width: 1600px;
-  height: 100vh;
-  margin: 0 auto;
-}
-
 .comparatorArea{
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   width: 1400px;
   padding: 5px 8px 5px 8px;
   background-color: #50565d;
 }
 
+@media (max-width: 1399px){
+  .comparatorArea{
+    width: 100vw;
+  }
+}
+
+@media (max-width: 710px){
+  .comparatorArea{
+    width: 710px;
+  }
+}
+
 .comparatorArea__half{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  flex-basis: 50%;
 }
 
 .comparatorArea__half:nth-child(1){

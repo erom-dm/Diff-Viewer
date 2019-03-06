@@ -33,16 +33,14 @@ class App extends Component {
 
     return (
         <Fragment>
-            <div className='mainContainer'>
-                <div className='comparatorArea'>
-                    <div className='comparatorArea__half'>
-                        <div className={'timeArea'}>{leftDate}</div>
-                        <TreeBeard data={leftData}/>
-                    </div>
-                    <div className='comparatorArea__half'>
-                        <div className={'timeArea'}>{rightDate}</div>
-                        <TreeBeard data={rightData}/>
-                    </div>
+            <div className='comparatorArea'>
+                <div className='comparatorArea__half'>
+                    <div className={'timeArea'}>{leftDate}</div>
+                    <TreeBeard data={leftData}/>
+                </div>
+                <div className='comparatorArea__half'>
+                    <div className={'timeArea'}>{rightDate}</div>
+                    <TreeBeard data={rightData}/>
                 </div>
             </div>
         </Fragment>
