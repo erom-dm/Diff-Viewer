@@ -5,14 +5,15 @@ export default {
         base: {
             listStyle: 'none',
             backgroundColor: '#50565d',
-            margin: '0 7px',
             padding: '2px 5px',
             color: '#c6ced4',
             fontFamily: 'lucida grande ,tahoma,verdana,arial,sans-serif',
             fontSize: '14px',
             width: '100%',
             height: '100%',
-            border: '1px solid #c6ced4'
+            border: '1px solid #c6ced4',
+            'margin-top': '5px',
+            'margin-bottom': '0',
         },
 
         node: {
@@ -75,16 +76,6 @@ export default {
             subtree: {
                 listStyle: 'none',
                 paddingLeft: '19px',
-                // '&:before':{
-                //     content: '""',
-                //     display: 'block',
-                //     position: 'relative',
-                //     bottom: 0,
-                //     left: '-15px',
-                //     width: '50%',
-                //     margin: '0 auto',
-                //     'border-right': '2px solid rgb(52, 53, 54)',
-                // }
             },
             loading: {
                 color: '#E2C089'
@@ -92,5 +83,3 @@ export default {
         }
     }
 };
-
-//border-right: 2px solid rgb(52, 53, 54);

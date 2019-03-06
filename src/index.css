@@ -13,32 +13,42 @@ code {
   monospace;
 }
 
-.navBar{
-  background-color: #000000;
-  color: #fff;
-}
-
 .mainContainer{
   width: 1600px;
-  height: 95vh;
+  height: 100vh;
   margin: 0 auto;
 }
 
 .comparatorArea{
-  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
   height: 100%;
   margin: 0 auto;
-  width: 1450px;
+  width: 1400px;
   padding: 5px 8px 5px 8px;
   background-color: #50565d;
 }
 
-/* todo: 16313 semantic css line redacted */
+.comparatorArea__half{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.comparatorArea__half:nth-child(1){
+  margin-right: 6px;
+}
+
+.timeArea{
+  font-weight: bold;
+  font-size: 15px;
+  padding-left: 7px;
+  color: #c6ced4;
+}
 
 .absent {
-  color: #e10b04;
+  color: #e10b04
 }
 
 .modified {
@@ -51,6 +61,10 @@ code {
 
 .toggle-off{
   margin-left: 16px;
+}
+
+.css-7t1nxl{
+  overflow: auto;
 }
 
 .css-79elbk div{
